@@ -1,0 +1,56 @@
+:root {
+  --bg: #FCFDFC;
+  --subtle: #F4F8F5;
+  --sunken: #EBF2ED;
+  --line: #E3EBE5;
+  --line-strong: #BCCBC0;
+  --ink: #14201A;
+  --ink-2: #4F5F56;
+  --ink-3: #85948B;
+  --teal: #23A26A;
+  --ok: #23A26A;
+  --ok-bg: #EAF8F0;
+  --ok-line: #B9E6CC;
+  --sil: #B6DEC6;
+  --sil-soft: #DDF0E4;
+  --warn: #A26A12;
+  --warn-bg: #FBF3E2;
+  --danger: #B23A2A;
+}
+
+html, body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Figtree", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  overscroll-behavior-y: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-text-size-adjust: 100%;
+  touch-action: manipulation;
+}
+
+button { -webkit-touch-callout: none; -webkit-user-select: none; user-select: none; }
+img { -webkit-touch-callout: none; }
+
+/* iOS zooms into inputs under 16px; keep every field (incl. sign-in) at 16px */
+@supports (-webkit-touch-callout: none) {
+  input, select, textarea { font-size: 16px !important; }
+}
+
+::selection { background: #C6EED8; }
+
+/* Metallic green finish on accent surfaces */
+.bg-\[var\(--teal\)\], .bg-\[var\(--ok\)\] {
+  background-image: linear-gradient(135deg, #8FE3B5 0%, #2DB676 36%, #6BD19C 60%, #1E9460 100%);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.45), inset 0 -1px 0 rgba(0,0,0,0.1);
+}
+
+.fade-up { animation: fadeUp 320ms cubic-bezier(.2,.7,.2,1) both; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+.check-dot { transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease; }
+.check-dot.is-on { animation: pop 320ms cubic-bezier(.3,1.6,.5,1); }
+@keyframes pop { 0% { transform: scale(.85); } 60% { transform: scale(1.12); } 100% { transform: scale(1); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-up, .check-dot.is-on { animation: none; }
+}
